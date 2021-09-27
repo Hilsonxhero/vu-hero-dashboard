@@ -235,6 +235,11 @@ export default {
       this.$refs.form.validate()
     },
   },
+  metaInfo() {
+    return {
+      title: 'دسته بندی ها',
+    }
+  },
 }
 </script>
 

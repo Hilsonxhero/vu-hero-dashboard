@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  name: "NotFound"
+  name: "NotFound",
+  metaInfo() {
+    return {
+      title: 'صفحه مورد نظر یافت نشد',
+    }
+  },
 }
 </script>
 

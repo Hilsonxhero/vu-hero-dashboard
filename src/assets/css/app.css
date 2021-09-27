@@ -10,6 +10,16 @@
 input, textarea, button {
     font-family: yekan-bakh-en;
 }
+.swal2-popup {
+    direction: rtl !important;
+    text-align: right !important;
+    font-family: yekan-bakh-en !important;
+    font-weight: 300 !important;
+}
+
+.swal2-popup.swal2-toast {
+    box-shadow: 0 7px 15px rgba(0,0,0,.10) !important;
+}
 
 .v-card {
     /*box-shadow: 0 5px 20px rgba(0,0,0,.05) !important; */
@@ -35,14 +45,24 @@ input, textarea, button {
     background-color: #ffffff !important;
 }
 
-
-.v-application .primary:hover {
+.v-application .primary{
     -webkit-box-shadow: 0 10px 20px -10px rgb(26, 92, 255);
     box-shadow: 0 10px 20px -10px rgb(26, 92, 255);
-    -webkit-transform: translateY(-3px);
-    transform: translateY(-3px);
+}
+.v-application .primary:hover {
+    /*-webkit-transform: translateY(-3px);*/
+    /*transform: translateY(-3px);*/
+}
+.v-application .success{
+    box-shadow: 0 10px 20px -10px #50cd89
+}
+.v-application .error{
+    box-shadow: 0 10px 20px -10px rgb(255, 71, 87)
 }
 
+.v-application .secondary{
+    box-shadow: 0 10px 20px -10px #424242;
+}
 .v-application .error {
     background-color: transparent !important;
     border: 2px solid rgb(255, 71, 87) !important;
@@ -58,13 +78,13 @@ input, textarea, button {
 
 }
 
-.v-btn.v-size--default {
-    font-size: 1rem !important;
-}
+/*.v-btn.v-size--default {*/
+/*    font-size: 1rem !important;*/
+/*}*/
 
-.v-btn.v-size--large {
-    font-size: 1.1rem !important;
-}
+/*.v-btn.v-size--large {*/
+/*    font-size: 1.1rem !important;*/
+/*}*/
 
 .v-btn.v-size--x-large {
     font-size: 1.3rem !important;
@@ -231,4 +251,14 @@ main {
 }
 .cke_chrome {
     border: unset !important;
+}
+
+.text--primary-ui{
+    color: #009ef7!important;
+}
+.text--warning-ui{
+    color: #ffc700!important;
+}
+.text--info-ui{
+    color: #7239ea!important;
 }

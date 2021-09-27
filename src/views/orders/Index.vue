@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col>
-        <v-toolbar-title class="text-h5 font-weight-bold mt-5">محصولات</v-toolbar-title>
+        <v-toolbar-title class="text-h5 font-weight-bold mt-5">سفارشات</v-toolbar-title>
 
         <v-breadcrumbs
             :items="breadcrumbs"
@@ -17,7 +17,7 @@
           <v-list-item>
             <v-list-item-content>
               <v-card-title>
-                محصولات
+                سفارشات
                 <v-spacer></v-spacer>
                 <v-text-field
                     class="pt-0"
@@ -35,8 +35,8 @@
             <v-list-item-content>
               <v-data-table
                   :search="search"
-                  :headers="categoriesHeader"
-                  :items="categories"
+                  :headers="header"
+                  :items="orders"
                   no-results-text="نتیجه ای یافت نشد"
               >
                 <template v-slot:footer.page-text="{pageStart,pageStop,itemsLength}">
@@ -50,6 +50,8 @@
                       fab
                       color="primary"
                       x-small
+                      router
+                      :to="{name : 'orders-edit',params : {id : 2}}"
                   >
                     <v-icon>mdi-pencil</v-icon>
                   </v-btn>
@@ -67,22 +69,48 @@
 
                 <template v-slot:item.status="{ item }">
                   <v-chip v-if="item.status === 1"
-                          color="success"
+                          color="error"
                           dark
                           outlined
                   >
-                    فعال
+                    پرداخت نا موفق
                   </v-chip>
                   <v-chip v-else-if="item.status === 2"
-                          color="error"
                           outlined
+                          color="secondary"
                   >
-                    غیرفعال
+                    در صف بررسی
                   </v-chip>
                   <v-chip v-else-if="item.status === 3"
                           outlined
                   >
-                    قفل شده
+                    تایید سفارش
+                  </v-chip>
+                  <v-chip v-else-if="item.status === 4"
+                          outlined
+                  >
+                    آماده سازی سفارش
+                  </v-chip>
+                  <v-chip v-else-if="item.status === 5"
+                          outlined
+                  >
+                    خروج از مرکز پردازش
+                  </v-chip>
+                  <v-chip v-else-if="item.status === 6"
+                          outlined
+                  >
+                    تحویل به پست
+                  </v-chip>
+                  <v-chip v-else-if="item.status === 7"
+                          outlined
+                  >
+                    تحویل مرسوله به مشتری
+                  </v-chip>
+                  <v-chip v-else-if="item.status === 8"
+                          outlined
+                          color="success"
+                  >
+                    تایید نشده
                   </v-chip>
                 </template>
               </v-data-table>
@@ -103,58 +131,50 @@ export default {
       {
         text: 'داشبورد',
         disabled: false,
-        href: 'breadcrumbs_dashboard',
+        href: '/dashboard',
       },
       {
-        text: 'محصولات',
+        text: 'سفارشات',
         disabled: true,
-        href: 'breadcrumbs_dashboard',
+        href: '/dashboard/orders',
       }
     ],
-    categoriesHeader: [
-      {text: 'عنوان', value: 'title'},
-      {text: 'دسته بندی', value: 'category'},
+    header: [
+      {text: 'شماره سفارش', value: 'id'},
       {text: 'قیمت', value: 'price'},
-      {text: 'بازدید', value: 'view'},
-      {text: 'فروش', value: 'sell'},
-      {text: 'موجودی', value: 'count'},
+      {text: 'روش ارسال', value: 'shipment'},
+      {text: 'تاریخ ثبت', value: 'date'},
       {text: 'وضعیت', value: 'status'},
       {text: 'عملیات', value: 'actions'},
     ],
-    categories: [
+    orders: [
       {
-        title: 'گوشی موبایل شیائومی مدل POCO X3 Pro M2102J20SG ',
-        category: 'کالای دیجیتال',
-        price: '6,700,000',
-        view: '1254',
-        sell: '850',
-        count: '1500',
+        id: 'DKR-1454514',
+        price: '7,400,000',
+        shipment: 'پیشتاز',
+        date: '12 مهر 1400',
         status: 1,
       },
       {
-        title: 'گوشی موبایل اپل مدل iPhone 12 A2404 دو سیم‌ کارت ظرفیت 128 گیگابایت',
-        category: 'کالای دیجیتال',
-        price: '24,700,000',
-        view: '740',
-        sell: '1000',
-        count: '5000',
+        id: 'DKR-1451314',
+        price: '7,400,000',
+        shipment: 'پیشتاز',
+        date: '12 مهر 1400',
         status: 2,
       },
       {
-        title: 'گوشی موبایل سامسونگ مدل Galaxy A32 SM-A325F/D',
-        category: 'کالای دیجیتال',
-        price: '6,500,000',
-        view: '7000',
-        sell: '650',
-        count: '140',
-        status: 3,
+        id: 'DKR-1459314',
+        price: '7,400,000',
+        shipment: 'پیشتاز',
+        date: '12 مهر 1400',
+        status: 8,
       },
     ],
     search: ''
   }),
   metaInfo() {
     return {
-      title: 'محصولات',
+      title: 'سفارشات',
     }
   },
 }

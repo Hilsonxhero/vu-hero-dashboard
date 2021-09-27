@@ -3,7 +3,7 @@
     <v-row>
       <v-col class="d-flex justify-space-between align-center">
         <div>
-          <v-toolbar-title class="text-h5 font-weight-bold mt-5">محصولات شگفت انگیز</v-toolbar-title>
+          <v-toolbar-title class="text-h5 font-weight-bold mt-5">برند ها</v-toolbar-title>
           <v-breadcrumbs
               :items="breadcrumbs"
               large
@@ -13,7 +13,7 @@
           <v-btn
               color="primary"
               router
-              :to="{name : 'products-index'}"
+              :to="{name : 'guarantee-create'}"
               class="ma-2 white--text"
           >
             ایجاد
@@ -30,12 +30,12 @@
 
     </v-row>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" md="10" lg="6">
         <v-card>
           <v-list-item>
             <v-list-item-content>
               <v-card-title>
-                محصولات شگفت انگیز
+                برند ها
                 <v-spacer></v-spacer>
                 <v-text-field
                     class="pt-0"
@@ -53,14 +53,18 @@
             <v-list-item-content>
               <v-data-table
                   :search="search"
-                  :headers="categoriesHeader"
-                  :items="categories"
+                  :headers="guaranteeHeader"
+                  :items="guarantee"
                   no-results-text="نتیجه ای یافت نشد"
               >
                 <template v-slot:footer.page-text="{pageStart,pageStop,itemsLength}">
                   {{ ` از ${pageStart}-${pageStop} -- تعداد کل (${itemsLength})` }}
                 </template>
+                <template v-slot:item.image="{ item }">
 
+
+                  <v-img width="90" :src="item.image"></v-img>
+                </template>
                 <template v-slot:item.actions="{ item }">
                   <v-btn
                       class="mr-2"
@@ -81,27 +85,6 @@
                   >
                     <v-icon> mdi-delete</v-icon>
                   </v-btn>
-                </template>
-
-                <template v-slot:item.status="{ item }">
-                  <v-chip v-if="item.status === 1"
-                          color="success"
-                          dark
-                          outlined
-                  >
-                    فعال
-                  </v-chip>
-                  <v-chip v-else-if="item.status === 2"
-                          color="error"
-                          outlined
-                  >
-                    غیرفعال
-                  </v-chip>
-                  <v-chip v-else-if="item.status === 3"
-                          outlined
-                  >
-                    قفل شده
-                  </v-chip>
                 </template>
               </v-data-table>
             </v-list-item-content>
@@ -124,34 +107,32 @@ export default {
         href: '/dashboard',
       },
       {
-        text: 'محصولات',
-        disabled: false,
-        href: '/products',
-      },
-      {
-        text: 'محصولات شگفت انگیز',
+        text: 'برند ها',
         disabled: true,
-        href: '/incredible',
       }
     ],
-    categoriesHeader: [
-      {text: 'محصول', value: 'product'},
-      {text: 'درصد تخفیف', value: 'percent'},
-      {text: 'زمان اتمام', value: 'date'},
-      {text: 'عملیات', value: 'actions'},
+    guaranteeHeader: [
+      {text: 'تصویر', value: 'image'},
+      {text: 'نام', value: 'title'},
+      {text: ' نام لاتین', value: 'slug'},
     ],
-    categories: [
+    guarantee: [
       {
-        product: 'گوشی موبایل شیائومی مدل POCO X3 Pro M2102J20SG ',
-        percent: '10%',
-        date: 'به اتمام رسیده',
+        image: require('../../assets/images/brands/lg-logo.png'),
+        title: 'ال جی',
+        slug: 'lg',
+      },
+      {
+        image: require('../../assets/images/brands/samsung-logo.png'),
+        title: 'سامسونگ',
+        slug: 'samsung',
       },
     ],
     search: ''
   }),
   metaInfo() {
     return {
-      title: 'پیشنهادات ویژه',
+      title: 'برند ها',
     }
   },
 }

@@ -259,12 +259,15 @@ export default {
         fontFamily: 'yekan-bakh-en',
         rtl: true,
       },
+      pattern: {
+
+      },
       colors: ['#2481EA', '#71FACA', '#8090BC'],
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '55%',
-          endingShape: 'rounded'
+          columnWidth: '30%',
+          endingShape: 'rounded',
         },
       },
       dataLabels: {
@@ -350,7 +353,10 @@ export default {
       },
     ],
   }),
-
-  components: {},
+  metaInfo() {
+    return {
+      title: 'داشبورد',
+    }
+  },
 }
 </script>

@@ -9,7 +9,7 @@
           right
       >
         <router-link :to="{name : 'Home'}">
-          <v-img width="120" class="mx-auto my-3" :src="require('../assets/logo-default.svg')"/>
+          <v-img width="120" class="mx-auto my-3" :src="require('../assets/logo.png')"/>
         </router-link>
 
         <v-list class="d-none">
@@ -150,11 +150,11 @@ export default {
           items: [
             {title: 'لیست محصولات', to: 'products-index'},
             {title: 'افزودن محصول', to: 'products-create'},
-            {title: 'پیشنهاد شگفت انگیز', to: 'product-incredible'},
-            {title: 'کد تخفیف', to: 'product-discount'},
-            {title: 'شیوه ارسال', to: 'product-shipment'},
-            {title: 'گارانتی ها', to: 'product-warrenty'},
-            {title: 'برندها', to: 'product-brand'},
+            {title: 'پیشنهاد شگفت انگیز', to: 'incredible'},
+            {title: 'کد تخفیف', to: 'discount'},
+            {title: 'شیوه ارسال', to: 'shipment'},
+            {title: 'گارانتی ها', to: 'guarantee'},
+            {title: 'برندها', to: 'brands'},
             {title: 'متغییر ها', to: 'product-variant'},
             {title: 'رضایت قیمت', to: 'product-price-survey'},
           ],
@@ -177,7 +177,7 @@ export default {
         {
           action: 'mdi-poll',
           items: [
-            {title: 'لیست  گزارشات', to: 'stats'},
+            {title: 'آمار  گزارشات', to: 'stats'},
           ],
           title: 'گزارشات',
         },

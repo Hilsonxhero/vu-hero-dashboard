@@ -1,13 +1,31 @@
 <template>
   <div>
     <v-row>
-      <v-col>
-        <v-toolbar-title class="text-h5 font-weight-bold mt-5">محصولات</v-toolbar-title>
+      <v-col class="d-flex justify-space-between align-center">
+        <div>
+          <v-toolbar-title class="text-h5 font-weight-bold mt-5">کد تخفیف</v-toolbar-title>
+          <v-breadcrumbs
+              :items="breadcrumbs"
+              large
+          ></v-breadcrumbs>
+        </div>
+        <div>
+          <v-btn
+              color="primary"
+              router
+              :to="{name : 'products-index'}"
+              class="ma-2 white--text"
+          >
+            ایجاد
+            <v-icon
+                right
+                dark
+            >
+              mdi-plus
+            </v-icon>
+          </v-btn>
+        </div>
 
-        <v-breadcrumbs
-            :items="breadcrumbs"
-            large
-        ></v-breadcrumbs>
       </v-col>
 
     </v-row>
@@ -17,7 +35,7 @@
           <v-list-item>
             <v-list-item-content>
               <v-card-title>
-                محصولات
+                کد های تخفیف
                 <v-spacer></v-spacer>
                 <v-text-field
                     class="pt-0"
@@ -35,8 +53,8 @@
             <v-list-item-content>
               <v-data-table
                   :search="search"
-                  :headers="categoriesHeader"
-                  :items="categories"
+                  :headers="discountsHeader"
+                  :items="discounts"
                   no-results-text="نتیجه ای یافت نشد"
               >
                 <template v-slot:footer.page-text="{pageStart,pageStop,itemsLength}">
@@ -77,12 +95,7 @@
                           color="error"
                           outlined
                   >
-                    غیرفعال
-                  </v-chip>
-                  <v-chip v-else-if="item.status === 3"
-                          outlined
-                  >
-                    قفل شده
+                    استفاده شده
                   </v-chip>
                 </template>
               </v-data-table>
@@ -103,58 +116,39 @@ export default {
       {
         text: 'داشبورد',
         disabled: false,
-        href: 'breadcrumbs_dashboard',
+        href: '/dashboard',
       },
       {
-        text: 'محصولات',
+        text: 'کد تخفیف',
         disabled: true,
-        href: 'breadcrumbs_dashboard',
       }
     ],
-    categoriesHeader: [
-      {text: 'عنوان', value: 'title'},
-      {text: 'دسته بندی', value: 'category'},
-      {text: 'قیمت', value: 'price'},
-      {text: 'بازدید', value: 'view'},
-      {text: 'فروش', value: 'sell'},
-      {text: 'موجودی', value: 'count'},
+    discountsHeader: [
+      {text: 'کد', value: 'code'},
+      {text: ' تخفیف', value: 'percent'},
+      {text: 'معتبر تا', value: 'date'},
       {text: 'وضعیت', value: 'status'},
       {text: 'عملیات', value: 'actions'},
     ],
-    categories: [
+    discounts: [
       {
-        title: 'گوشی موبایل شیائومی مدل POCO X3 Pro M2102J20SG ',
-        category: 'کالای دیجیتال',
-        price: '6,700,000',
-        view: '1254',
-        sell: '850',
-        count: '1500',
+        code: 'NBV-54785',
+        percent: '10%',
+        date: '12 اسفند 23:59',
         status: 1,
       },
       {
-        title: 'گوشی موبایل اپل مدل iPhone 12 A2404 دو سیم‌ کارت ظرفیت 128 گیگابایت',
-        category: 'کالای دیجیتال',
-        price: '24,700,000',
-        view: '740',
-        sell: '1000',
-        count: '5000',
+        code: 'NBV-11142',
+        percent: '45%',
+        date: '12 دی 23:59',
         status: 2,
-      },
-      {
-        title: 'گوشی موبایل سامسونگ مدل Galaxy A32 SM-A325F/D',
-        category: 'کالای دیجیتال',
-        price: '6,500,000',
-        view: '7000',
-        sell: '650',
-        count: '140',
-        status: 3,
       },
     ],
     search: ''
   }),
   metaInfo() {
     return {
-      title: 'محصولات',
+      title: 'تخفیف ها',
     }
   },
 }

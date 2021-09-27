@@ -131,6 +131,11 @@ export default {
     ],
     search: ''
   }),
+  metaInfo() {
+    return {
+      title: 'کاربران',
+    }
+  },
 }
 </script>
 

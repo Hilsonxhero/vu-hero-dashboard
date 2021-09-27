@@ -300,6 +300,11 @@ export default {
       this.$refs.form.validate()
     },
   },
+  metaInfo() {
+    return {
+      title: 'ایجاد محصول جدید',
+    }
+  },
 }
 </script>
 
